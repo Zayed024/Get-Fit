@@ -107,7 +107,7 @@ const useAuth = () => {
   return context;
 };
 
-// Components
+// Import components after the API helper and Auth context
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';

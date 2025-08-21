@@ -14,9 +14,11 @@ from enum import Enum
 
 # Configuration
 MONGO_URL = config("MONGO_URL", default="mongodb://localhost:27017/getfit")
-JWT_SECRET_KEY = config("JWT_SECRET_KEY", default="your-super-secret-jwt-key")
+JWT_SECRET_KEY = config("JWT_SECRET_KEY")
 JWT_ALGORITHM = config("JWT_ALGORITHM", default="HS256")
 JWT_EXPIRATION_HOURS = config("JWT_EXPIRATION_HOURS", default=24, cast=int)
+PORT = config("PORT", default=8001, cast=int)
+CORS_ORIGINS = config("CORS_ORIGINS", default="http://localhost:3000").split(",")
 
 # FastAPI app
 app = FastAPI(title="GetFit API", version="1.0.0")
@@ -24,7 +26,7 @@ app = FastAPI(title="GetFit API", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -416,4 +418,4 @@ async def get_friends(current_user: dict = Depends(get_current_user)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)

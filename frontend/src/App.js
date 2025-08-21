@@ -3,6 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 
+// Import components
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
+import Dashboard from './components/Dashboard';
+import ActivityLogger from './components/ActivityLogger';
+import StreakCalendar from './components/StreakCalendar';
+import FriendsTab from './components/FriendsTab';
+import Navigation from './components/Navigation';
+
 // Context
 const AuthContext = createContext();
 
